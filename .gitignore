@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/PortSpeedTestTemplate/Flow.cs
+/PortSpeedTestTemplate/Flow.cs
+/PortSpeedTestTemplate/Test.cs
+/PortSpeedTestTemplate/TestTemplate.cs
+/PortSpeedTestTemplate/TestTemplate.cs
