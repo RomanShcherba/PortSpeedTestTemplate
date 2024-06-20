@@ -366,3 +366,6 @@ FodyWeavers.xsd
 /PortSpeedTestTemplate/Test.cs
 /PortSpeedTestTemplate/TestTemplate.cs
 /PortSpeedTestTemplate/TestTemplate.cs
+/PortSpeedTestTemplate/WebCardSpeedTest.cs
+/PortSpeedTestTemplate/WebCardSpeedTestFlow.cs
+/PortSpeedTestTemplate/WebCardSpeedTestTemplate.cs
