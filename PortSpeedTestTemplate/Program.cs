@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using System.Reflection;
 
 namespace PortSpeedTestTemplate
 {
@@ -8,49 +9,44 @@ namespace PortSpeedTestTemplate
         static void Main()
         {
             string testName = "NetworkCardSpeedTest";
-            //Type t = Type.GetType(testName);
-            //var testClassName = (NetworkCardSpeedTest)Activator.CreateInstance(t);
-            NetworkCardSpeedTest testClassName = new NetworkCardSpeedTest(testName);
-            testClassName.Execute(testClassName);
-            
-            
-            //Test2("Test 2");
-            //Test10("Test 10");
+
+            string className = $"PortSpeedTestTemplate.{testName}";
+
+            Execute(className);
         }
-        
-        
-        //static void Test1 (string testName)
-        //{
-        //    NetworkCardSpeedTestTemplate parameters = new NetworkCardSpeedTestTemplate(1, new Dictionary<int, int> { { 1, 10 } });
-        //    NetworkCardSpeedTest networkCardSpeedTest = new NetworkCardSpeedTest(testName, parameters);
 
-        //    //networkCardSpeedTest.Execute();
-        //}
 
-        //static void Test2(string testName)
-        //{
-        //    NetworkCardSpeedTestTemplate parameters = new NetworkCardSpeedTestTemplate(1, new Dictionary<int, int> { { 1, 25 } });
-        //    NetworkCardSpeedTest networkCardSpeedTest = new NetworkCardSpeedTest(testName, parameters);
-        //    //networkCardSpeedTest.Execute();
-        //}
 
-        //static void Test10 (string testName)
-        //{
-        //    NetworkCardSpeedTestTemplate parameters = new NetworkCardSpeedTestTemplate(8, new Dictionary<int, int> { { 1, 10 }, { 2, 10 }, { 3, 10 }, { 4, 10 }, { 5, 10 }, { 6, 25 }, { 7, 10 }, { 8, 10 }, });
-        //    NetworkCardSpeedTest networkCardSpeedTest = new NetworkCardSpeedTest(testName, parameters);
-        //    //networkCardSpeedTest.Execute();
-        //}
-        public void Execute(NetworkCardSpeedTest test)
+        public static void Execute(string className)
         {
-            Console.WriteLine($"Start of test execution: {test.TestName}, \nDescription: {test.TestDescription}");
-            //NetworkCardSpeedTestFlow flow = new NetworkCardSpeedTestFlow(parameters.Mode, parameters.PortSpeed);
-            test.Prepare();
-            test.Run();
-            test.Clean();
-        }
-        public void DisplayInfo(string testName)
-        {
-            Console.WriteLine($"\nTest Name:{testName}");
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            Type? type = assembly.GetType(className);
+
+            if (type != null)
+            {
+                object instance = Activator.CreateInstance(type);
+
+                string fieldName = (string)type.GetField("Name").GetValue(instance);
+                string fieldDescription = (string)type.GetField("Description").GetValue(instance);
+
+                Console.WriteLine($"Start of test execution: {fieldName} \nDescription: {fieldDescription}");
+
+                MethodInfo prepare = type.GetMethod("Prepare");
+                MethodInfo run = type.GetMethod("Run");
+                MethodInfo clean = type.GetMethod("Clean");
+
+                if (prepare != null && run != null && clean != null)
+                {
+                    prepare.Invoke(instance, null);
+                    run.Invoke(instance, null);
+                    clean.Invoke(instance, null);
+                }
+
+            }
+            else
+            {
+                Console.WriteLine($"There is no such test: {className}");
+            }
         }
     }
 }

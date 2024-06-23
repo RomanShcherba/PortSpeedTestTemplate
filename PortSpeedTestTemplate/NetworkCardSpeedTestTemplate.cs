@@ -5,25 +5,19 @@ namespace PortSpeedTestTemplate
 {
     public abstract class NetworkCardSpeedTestTemplate : Program
     {
+        //public string TestDescription { get; set; }
 
-        public int Mode { get; set; }
-
-        public int PortNumber { get; set; }
-        public Dictionary<int, int> PortSpeed { get; set; }
-
-        public string TestDescription { get; set; }
-
-        public string TestName { get; set; }
+        //public string TestName { get; set; }
 
         protected virtual List<(byte mode, List<(int port, int speed)>)> TestData { get; set; }
-        
+
         //public NetworkCardSpeedTestTemplate(int mode, Dictionary<int, int> portSpeed)
         //{
         //    Mode = mode;
         //    PortSpeed = portSpeed;
         //}
 
-        public void CheckActiveCardMode(int mode)
+        public void CheckActiveCardMode(byte mode)
         {
             Console.WriteLine($"Active card mode {mode} ");
         }
@@ -45,7 +39,7 @@ namespace PortSpeedTestTemplate
             Console.WriteLine("Waiting time 3 secs");
         }
 
-        public void SetCardMode(int mode)
+        public void SetCardMode(byte mode)
         {
             Console.WriteLine($"Card mode {mode}");
         }

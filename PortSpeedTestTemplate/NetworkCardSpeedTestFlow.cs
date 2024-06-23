@@ -1,40 +1,34 @@
 ﻿
+using System.Collections.Generic;
+
 namespace PortSpeedTestTemplate
 {
 
     public class NetworkCardSpeedTestFlow : NetworkCardSpeedTestTemplate
     {
-        protected readonly NetworkCardSpeedTestTemplate parameters;
- 
-        //public NetworkCardSpeedTestFlow(string testName)
-        //   : base()
-        //{
-        //    this.parameters = parameters;
-        //    TestName = testName;
-        //}
-
-        //public NetworkCardSpeedTestFlow(int mode, Dictionary<int, int> portSpeed) : base(mode, portSpeed)
-        //{
-
-        //}
-
         public override bool Prepare()
         {
             Console.WriteLine("Preparing test");
             return true;
         }
-
+        //List<(byte mode, List<(int port, int speed)>)> TestData
+        //List <int> TestData
         public override void Run()
         {
             Console.WriteLine("Running test");
-            foreach ((int port, int speed) in TestData[0].Item2)
+
+            foreach (var testDataElement in TestData)
             {
-                SetPortSpeed(port, port);
-                CheckPortStatus(port);
+                byte mode = testDataElement.mode;
+                Console.WriteLine($"Running mode: {mode}");
+                foreach ((int port, int speed) in testDataElement.Item2)
+                {
+                    SetPortSpeed(port, speed);
+                    CheckPortStatus(port);
+
+                }
             }
         }
-
-
         public override bool Clean()
         {
             Console.WriteLine("Cleaning up after test");
