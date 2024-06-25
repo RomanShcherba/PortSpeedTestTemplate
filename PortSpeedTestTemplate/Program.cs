@@ -1,11 +1,17 @@
-﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+﻿//Company's property 2024
+
 using System.Reflection;
 
 namespace PortSpeedTestTemplate
 {
-
+    /// <summary>
+    /// Program
+    /// </summary>
     public abstract class Program
     {
+        /// <summary>
+        /// Main
+        /// </summary>
         static void Main()
         {
             string testName = "NetworkCardSpeedTest";
@@ -16,7 +22,12 @@ namespace PortSpeedTestTemplate
         }
 
 
-
+        /// <summary>
+        /// Test executor
+        /// </summary>
+        /// <param name="className">
+        /// Class name
+        /// </param>
         public static void Execute(string className)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
