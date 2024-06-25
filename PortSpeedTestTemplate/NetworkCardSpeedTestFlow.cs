@@ -7,7 +7,7 @@ namespace PortSpeedTestTemplate
     /// </summary>
     public class NetworkCardSpeedTestFlow : NetworkCardSpeedTestTemplate
     {
-        #region Execution methods
+        #region Public methods
         /// <summary>
         /// Prepare for test
         /// </summary>
@@ -23,26 +23,11 @@ namespace PortSpeedTestTemplate
         }
 
         /// <summary>
-        /// Clean after test
-        /// </summary>
-        /// <returns></returns>
-        public override bool Clean()
-        {
-            RestoreDefaultMode();
-            RestoreDefaultSpeed();
-            Console.WriteLine("\nCleaning up after test");
-            return true;
-        }
-        #endregion
-
-        #region Runner
-
-        /// <summary>
         /// Test run
         /// </summary>
         public override void Run()
         {
-            Console.WriteLine("\nRunning test");
+            Console.WriteLine("\nRunning test[");
 
             foreach (var testDataElement in TestData)
             {
@@ -57,6 +42,18 @@ namespace PortSpeedTestTemplate
                     CheckPortStatus(port);
                 }
             }
+        }
+
+        /// <summary>
+        /// Clean after test
+        /// </summary>
+        /// <returns></returns>
+        public override bool Clean()
+        {
+            RestoreDefaultMode();
+            RestoreDefaultSpeed();
+            Console.WriteLine("\nCleaning up after test");
+            return true;
         }
         #endregion
     }

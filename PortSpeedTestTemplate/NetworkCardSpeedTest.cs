@@ -12,7 +12,7 @@ namespace PortSpeedTestTemplate
         /// <summary>
         /// Name of test
         /// </summary>
-        public const string Name = "WebCardSpeedTest";
+        public const string Name = "NetworkCardSpeedTest";
 
         /// <summary>
         /// Description of test
@@ -25,7 +25,7 @@ namespace PortSpeedTestTemplate
         /// <summary>
         /// Tuple of dataset
         /// </summary>
-        protected override List<(byte mode, List<(int port, int speed)>)> TestData => new List<(byte mode, List<(int port, int speed)>)>()
+        protected override List<(byte mode, List<(int port, int speed)>)> TestData => new()
         {
          (mode : 1, new List<(int, int)>
                                  {
@@ -62,7 +62,7 @@ namespace PortSpeedTestTemplate
                                      (port : 1, speed : 10),
                                      (port : 2, speed : 25),
                                      (port : 3, speed : 25),
-                                     (port : 4, speed : 25 )
+                                     (port : 4, speed : 25)
                                  }),
 
          (mode : 4, new List<(int, int)>

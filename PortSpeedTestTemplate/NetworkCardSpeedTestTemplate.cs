@@ -8,14 +8,14 @@ namespace PortSpeedTestTemplate
     public abstract class NetworkCardSpeedTestTemplate : Program
     {
 
-        #region Execution methods
+        #region Public methods
         /// <summary>
         /// Active card mode
         /// </summary>
         /// <param name="mode">
         /// Card mode
         /// </param>
-        public void CheckActiveCardMode(byte mode)
+        public static void CheckActiveCardMode(byte mode)
         {
             Console.WriteLine($"\nActive card mode {mode} ");
         }
@@ -29,7 +29,7 @@ namespace PortSpeedTestTemplate
         /// <param name="speed">
         /// speed
         /// </param>
-        public void CheckEachSpeed(int port, int speed)
+        public static void CheckEachSpeed(int port, int speed)
         {
             Console.WriteLine($"\nPort speed{port}, {speed}");
 
@@ -38,7 +38,7 @@ namespace PortSpeedTestTemplate
         /// <summary>
         /// Saving active mode
         /// </summary>
-        public void SaveCardMod()
+        public static void SaveCardMod()
         {
             Console.WriteLine("\nSave active card mode");
         }
@@ -46,7 +46,7 @@ namespace PortSpeedTestTemplate
         /// <summary>
         /// Restore to default mod
         /// </summary>
-        public void RestoreDefaultMode()
+        public static void RestoreDefaultMode()
         {
             Console.WriteLine("\nRestore default mode");
         }
@@ -54,7 +54,7 @@ namespace PortSpeedTestTemplate
         /// <summary>
         /// Restore to default speed
         /// </summary>
-        public void RestoreDefaultSpeed()
+        public static void RestoreDefaultSpeed()
         {
             Console.WriteLine("\nRestore default speed");
         }
@@ -62,7 +62,7 @@ namespace PortSpeedTestTemplate
         /// <summary>
         /// Waiting after restart
         /// </summary>
-        public void Waiting()
+        public static void Waiting()
         {
             Console.WriteLine("\nWaiting time 3 secs");
         }
@@ -73,7 +73,7 @@ namespace PortSpeedTestTemplate
         /// <param name="mode">
         /// Card mode
         /// </param>
-        public void SetCardMode(byte mode)
+        public static void SetCardMode(byte mode)
         {
             Console.WriteLine($"\nCard mode {mode}");
         }
@@ -81,9 +81,9 @@ namespace PortSpeedTestTemplate
         /// <summary>
         /// Reset
         /// </summary>
-        public void Reset()
+        public static void Reset()
         {
-            Console.WriteLine("\nResetd");
+            Console.WriteLine("\nReseted");
         }
 
         /// <summary>
@@ -95,9 +95,9 @@ namespace PortSpeedTestTemplate
         /// <param name="portSeed">
         /// Speed of port
         /// </param>
-        public void SetPortSpeed(int portNumber, int portSeed)
+        public static void SetPortSpeed(int portNumber, int portSeed)
         {
-            Console.WriteLine($"Setting port speed {portNumber} to {portSeed}");
+            Console.WriteLine($"\nSetting port speed {portNumber} to {portSeed}");
         }
 
         /// <summary>
@@ -106,12 +106,12 @@ namespace PortSpeedTestTemplate
         /// <param name="portNumber">
         /// Number of port
         /// </param>
-        public void CheckPortStatus(int portNumber)
+        public static void CheckPortStatus(int portNumber)
         {
-            Console.WriteLine($"Checking status of port{portNumber}");
+            Console.WriteLine($"\nChecking status of port{portNumber}");
         }
-        #endregion
-        #region Abstract flow methods
+
+
         /// <summary>
         /// Prepare
         /// </summary>
@@ -128,6 +128,7 @@ namespace PortSpeedTestTemplate
         /// </summary>
         /// <returns></returns>
         public abstract bool Clean();
+
         #endregion
 
         protected virtual List<(byte mode, List<(int port, int speed)>)> TestData { get; set; }

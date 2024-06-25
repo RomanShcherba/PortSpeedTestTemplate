@@ -14,7 +14,7 @@ namespace PortSpeedTestTemplate
         /// </summary>
         static void Main()
         {
-            string testName = "NetworkCardSpeedTest";
+            string testName = "PortSpeedTestTemplate";
 
             string className = $"PortSpeedTestTemplate.{testName}";
 
