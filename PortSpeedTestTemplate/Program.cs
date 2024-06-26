@@ -12,9 +12,9 @@ namespace PortSpeedTestTemplate
         /// <summary>
         /// Main
         /// </summary>
-        static void Main()
+        public static void Main(string[] args)
         {
-            string testName = "PortSpeedTestTemplate";
+            string testName = args[0]; 
 
             string className = $"PortSpeedTestTemplate.{testName}";
 

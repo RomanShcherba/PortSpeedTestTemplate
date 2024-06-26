@@ -7,7 +7,7 @@ namespace PortSpeedTestTemplate
     /// </summary> 
     public class NetworkCardSpeedTest : NetworkCardSpeedTestFlow
     {
-        #region Fields
+        #region public Fields
 
         /// <summary>
         /// Name of test
@@ -21,9 +21,10 @@ namespace PortSpeedTestTemplate
 
         #endregion
 
-        #region Data set
+        #region List 
+
         /// <summary>
-        /// Tuple of dataset
+        /// List of data
         /// </summary>
         protected override List<(byte mode, List<(int port, int speed)>)> TestData => new()
         {

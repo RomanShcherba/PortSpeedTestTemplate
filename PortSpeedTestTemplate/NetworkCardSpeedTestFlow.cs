@@ -8,6 +8,7 @@ namespace PortSpeedTestTemplate
     public class NetworkCardSpeedTestFlow : NetworkCardSpeedTestTemplate
     {
         #region Public methods
+
         /// <summary>
         /// Prepare for test
         /// </summary>
